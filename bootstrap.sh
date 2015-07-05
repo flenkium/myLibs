@@ -64,6 +64,12 @@ case $MAKE_TOOL in
    make)   CMAKE_TOOL="Unix Makefiles";;
 esac
 
+if [ ! -e lib/myBDD/.gitignore ]; then
+  echo "git submodules not exist"
+  git submodule init &&
+  git submodule update
+fi &&
+
 mkdir -p $BUILD_PATH &&
 cd $BUILD_PATH &&
 CXX=$CXXCOMPILER cmake -DCMAKE_PREFIX_PATH=.. \
