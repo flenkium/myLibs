@@ -1,0 +1,3 @@
+[submodule "lib/myBDD"]
+	path = lib/myBDD
+	url = git@github.com:flenkium/myBDD.git
