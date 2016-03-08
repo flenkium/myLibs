@@ -30,4 +30,5 @@
 # my ignores
 build/*
 install/*
+.idea/*
 
