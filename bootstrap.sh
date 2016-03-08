@@ -19,7 +19,7 @@ MAKE_TOOL=ninja
 
 
 ####################################################
-if ! [[ "$1" ]]; then
+function printHelp {
     cat << EOF
 $0 sets up a path-fault-debug build folder.
 usage: $0 [OPTIONS] [build_dir]
@@ -37,14 +37,16 @@ usage: $0 [OPTIONS] [build_dir]
       <build_dir>     the folder to setup the build environment in
 EOF
     exit 1
-fi
+}
 
+####################################################
 while [[ "$@" ]]; do
     case $1 in
         --build)      DO_MAKE="yes";;
         --clean|-c)   CLEAN="rm -rf";;
         --cmake)      CMAKE="$2"; shift;;
          -D*)         CMAKE_ARGS="$CMAKE_ARGS $1";;
+        --help|-h)    printHelp;;
         --install|-i) INSTALL_PATH="$2"; shift;;
         --make_tool|-mt) MAKE_TOOL=$2; shift;;
         --mode|-m)    BUILD_TYPE="$2"; shift;;
